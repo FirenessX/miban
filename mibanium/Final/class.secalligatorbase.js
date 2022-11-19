@@ -1,4 +1,6 @@
-class SecAlligatorBase extends LivingCreature{
+let LivingCreature = require('./LivingCreature');
+
+module.exports = class SecAlligatorBase extends LivingCreature{
     constructor(x, y) {
         super(x, y);
         this.directions = []

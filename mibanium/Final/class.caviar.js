@@ -1,4 +1,6 @@
-class Caviar extends LivingCreature{
+let LivingCreature = require('./LivingCreature');
+
+module.exports = class Caviar extends LivingCreature{
     constructor (x, y, index){
         super(x, y, index);
         this.multiply = 0;

@@ -1,4 +1,6 @@
-class Predator extends LivingCreature{
+let LivingCreature = require('./LivingCreature');
+
+module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
@@ -83,7 +85,7 @@ class Predator extends LivingCreature{
                     break;
                 }
             }
-            this.energy++;
+            this.energy + 0.5;
         }
             if (newCellsGEs) {
                 var newX = newCellsGEs[0];
@@ -101,7 +103,7 @@ class Predator extends LivingCreature{
                         break;
                     }
                 }
-                this.energy + 3;
+                this.energy + 2;
             }
                 if (newCellsMush) {
                     var newX = newCellsMush[0];
