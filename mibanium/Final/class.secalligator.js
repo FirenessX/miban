@@ -21,7 +21,7 @@ module.exports = class SecAlligator extends LivingCreature{
     }
 
     move() {
-        const waterCells = random(this.chooseCell(7));
+        const waterCells = this.random(this.chooseCell(7));
         if (waterCells) {
             let newX = waterCells[0];
             let newY = waterCells[1];

@@ -16,7 +16,7 @@ module.exports = class FishsNest extends LivingCreature{
     }
     mul() {
         var waterCells = this.chooseCell(7);
-        var newCell = random(waterCells);
+        var newCell = this.random(waterCells);
 
         if (newCell && this.multiply >= 40) {
             var newX = newCell[0];

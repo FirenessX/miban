@@ -34,9 +34,9 @@ module.exports = class Caviar extends LivingCreature{
     mul() {
     
         var waterCells = this.chooseCell(7);
-        const aldieCells = random(this.chooseCell(13));
-        const secaldieCells = random(this.chooseCell(18));
-        var newCell = random(waterCells);
+        const aldieCells = this.random(this.chooseCell(13));
+        const secaldieCells = this.random(this.chooseCell(18));
+        var newCell = this.random(waterCells);
         if (this.time < 0) {
             this.stop();
         }

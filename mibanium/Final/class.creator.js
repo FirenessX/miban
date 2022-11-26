@@ -29,7 +29,7 @@ module.exports = class Creator extends LivingCreature{
 
     mul1() {
         let found = this.chooseCell(0)
-        let newCell = random(found);
+        let newCell = this.random(found);
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -39,7 +39,7 @@ module.exports = class Creator extends LivingCreature{
     }
     mul2() {
         let found = this.chooseCell(0);
-        let newCell = random(found);
+        let newCell = this.random(found);
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -51,9 +51,9 @@ module.exports = class Creator extends LivingCreature{
         }
     }
     move() {
-        const emptCells = random(this.chooseCell(0));
-        const emptCellsG = random(this.chooseCell(1));
-        const emptCellsM = random(this.chooseCell(3));
+        const emptCells = this.random(this.chooseCell(0));
+        const emptCellsG = this.random(this.chooseCell(1));
+        const emptCellsM = this.random(this.chooseCell(3));
         if (emptCells) {
             let newX = emptCells[0];
             let newY = emptCells[1];

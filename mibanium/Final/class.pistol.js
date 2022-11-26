@@ -28,11 +28,11 @@ module.exports = class Pistol extends LivingCreature{
         var GECells = this.chooseCell(2);
         var MCells = this.chooseCell(3);
         var PCells = this.chooseCell(12);
-        var newCell = random(emptyCells);
-        var newCellG = random(GCells);
-        var newCellGE = random(GECells);
-        var newCellM = random(MCells);
-        var newCellP = random(PCells);
+        var newCell = this.random(emptyCells);
+        var newCellG = this.random(GCells);
+        var newCellGE = this.random(GECells);
+        var newCellM = this.random(MCells);
+        var newCellP = this.random(PCells);
 
         if (newCellG /*&& this.multiply >= random(5 , 15)*/) {
             var newX = newCellG[0];

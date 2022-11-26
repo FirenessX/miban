@@ -20,11 +20,11 @@ module.exports = class Bullet extends LivingCreature{
         return super.chooseCell(character);
     }
     destroy() {
-        const emptyCells = random(this.chooseCell(0));
-        const GCells = random(this.chooseCell(1));
-        const GECells = random(this.chooseCell(2));
-        const MCells = random(this.chooseCell(3));
-        const PCells = random(this.chooseCell(12));
+        const emptyCells = this.random(this.chooseCell(0));
+        const GCells = this.random(this.chooseCell(1));
+        const GECells = this.random(this.chooseCell(2));
+        const MCells = this.random(this.chooseCell(3));
+        const PCells = this.random(this.chooseCell(12));
         if (emptyCells) {
             let newX = emptyCells[0];
             let newY = emptyCells[1];

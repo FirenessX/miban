@@ -36,19 +36,19 @@ module.exports = class Crater extends LivingCreature{
         this.CD++;
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = this.random(emptyCells);
         var GCells = this.chooseCell(1);
-        var newCellG = random(GCells);
+        var newCellG = this.random(GCells);
         var GECells = this.chooseCell(2);
-        var newCellGE = random(GECells);
+        var newCellGE = this.random(GECells);
         var MCells = this.chooseCell(3);
-        var newCellM = random(MCells);
+        var newCellM = this.random(MCells);
         var PCells = this.chooseCell(12);
-        var newCellP = random(PCells);
+        var newCellP = this.random(PCells);
         var CCells = this.chooseCell(27);
-        var newCellC = random(CCells);
+        var newCellC = this.random(CCells);
         var CCells2 = this.chooseCell(29);
-        var newCellC2 = random(CCells2);
+        var newCellC2 = this.random(CCells2);
         if (newCell && this.multiply >= 1) {
             var newX = newCell[0];
             var newY = newCell[1];

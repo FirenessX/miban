@@ -30,8 +30,8 @@ module.exports = class Mushroom extends LivingCreature{
         
         var emptyCells = this.chooseCell(0);
         var grassCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
-        var newCellG = random(grassCells);
+        var newCell = this.random(emptyCells);
+        var newCellG = this.random(grassCells);
         if(newCell && this.multiply >= 210){
             var newX = newCell[0];
             var newY = newCell[1];

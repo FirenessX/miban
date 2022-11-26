@@ -29,11 +29,11 @@ module.exports = class Predator extends LivingCreature{
 
     mul() {                                                                                    
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = this.random(emptyCells);
         var grassCells = this.chooseCell(1);
-        var newCellG = random(grassCells);
+        var newCellG = this.random(grassCells);
         var mushCells = this.chooseCell(3);
-        var newCellM = random(mushCells);
+        var newCellM = this.random(mushCells);
 
         if (newCell && this.multiply >= 240) {
             var newX = newCell[0];
@@ -65,10 +65,10 @@ module.exports = class Predator extends LivingCreature{
     }
 
     eat() {
-        const newCells = random(this.chooseCell(1));
-        const newCellsGEs = random(this.chooseCell(2));
-        const newCellsMush = random(this.chooseCell(3));
-        const bdeath = random(this.chooseCell(27));
+        const newCells = this.random(this.chooseCell(1));
+        const newCellsGEs = this.random(this.chooseCell(2));
+        const newCellsMush = this.random(this.chooseCell(3));
+        const bdeath = this.random(this.chooseCell(27));
         if (newCells) {
             var newX = newCells[0];
             var newY = newCells[1];
@@ -131,10 +131,10 @@ module.exports = class Predator extends LivingCreature{
         }
     move() {
         this.multiply++;
-        const emptCells = random(this.chooseCell(0));
-        const emptCellsG = random(this.chooseCell(1));
-        const emptCellsGEs = random(this.chooseCell(2));
-        const emptCellsM = random(this.chooseCell(3));
+        const emptCells = this.random(this.chooseCell(0));
+        const emptCellsG = this.random(this.chooseCell(1));
+        const emptCellsGEs = this.random(this.chooseCell(2));
+        const emptCellsM = this.random(this.chooseCell(3));
         if (emptCells) {
             let newX = emptCells[0];
             let newY = emptCells[1];

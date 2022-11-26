@@ -28,7 +28,7 @@ module.exports = class Fishs extends LivingCreature{
     mul() {
         this.multiply++;
         var waterCells = this.chooseCell(7);
-        var newCell = random(waterCells);
+        var newCell = this.random(waterCells);
 
         if (newCell && this.multiply >= 70) {
             var newX = newCell[0];
@@ -43,9 +43,9 @@ module.exports = class Fishs extends LivingCreature{
         }
     }
     move() {
-        const waterCells = random(this.chooseCell(7));
-        const aldieCells = random(this.chooseCell(13));
-        const secaldieCells = random(this.chooseCell(18));
+        const waterCells = this.random(this.chooseCell(7));
+        const aldieCells = this.random(this.chooseCell(13));
+        const secaldieCells = this.random(this.chooseCell(18));
         if (waterCells) {
             let newX = waterCells[0];
             let newY = waterCells[1];

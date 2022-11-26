@@ -1,7 +1,5 @@
 let socket = io();
 
-
-
 const side = 23;
 
 function mousePressed() {

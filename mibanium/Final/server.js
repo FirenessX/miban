@@ -23,39 +23,39 @@ bulletArr = [];
 pistolArr = [];
 craterArr = [];
 
-Grass = require("./Final/class.grass");
-GrassEaters = require("./final/class.grasseaters.js");
-AlBone = require("./final/class.albone.js");
-AlBoneBase = require("./final/class.albonebase.js");
-Alligator = require("./final/class.alligator.js");
-AlligatorBase = require("./final/class.alligatorbase.js");
-AlligatorTale = require("./final/class.alligatortale.js");
-Bullet = require("./final/class.bullet.js");
-Caviar = require("./final/class.caviar.js");
-Crater = require("./final/class.crater.js");
-Creator = require("./final/class.creator.js");
-Fishs = require("./final/class.fishs.js");
-FishsNest = require("./final/class.fishsnest.js");
-LivingCreature = require("./final/LivingCreature.js");
-Mushroom = require("./final/class.mushroom.js");
-Nest = require("./final/class.nest.js");
-Pistol = require("./final/class.pistol.js");
-Predator = require("./final/class.predator.js");
-SecAlBone = require("./final/class.secalbone.js");
-SecAlBoneBase = require("./final/class.secalbonebase.js");
-SecAlligator = require("./final/class.secalligator.js");
-SecAlligatorBase = require("./final/class.secalligatorbase.js");
-SecAlligatorTale = require("./final/class.secalligatortale.js");
+Grass = require("./class.grass");
+GrassEaters = require("./class.grasseaters.js");
+AlBone = require("./class.albone.js");
+AlBoneBase = require("./class.albonebase.js");
+Alligator = require("./class.alligator.js");
+AlligatorBase = require("./class.alligatorbase.js");
+AlligatorTale = require("./class.alligatortale.js");
+Bullet = require("./class.bullet.js");
+Caviar = require("./class.caviar.js");
+Crater = require("./class.crater.js");
+Creator = require("./class.creator.js");
+Fishs = require("./class.fishs.js");
+FishsNest = require("./class.fishsnest.js");
+LivingCreature = require("./LivingCreature.js");
+Mushroom = require("./class.mushroom.js");
+Nest = require("./class.nest.js");
+Pistol = require("./class.pistol.js");
+Predator = require("./class.predator.js");
+SecAlBone = require("./class.secalbone.js");
+SecAlBoneBase = require("./class.secalbonebase.js");
+SecAlligator = require("./class.secalligator.js");
+SecAlligatorBase = require("./class.secalligatorbase.js");
+SecAlligatorTale = require("./class.secalligatortale.js");
 
 var express = require('express');
-var app = express();
-var server = require('http').Server(app);
+var http = express();
+var server = require('http').Server(http);
 var io = require('socket.io')(server);
-app.use(express.static("final"));
-app.get('/', function (req, res) {
-    res.redirect('localhost:4004');
+http.use(express.static("final"));
+http.get('/', function (req, res) {
+    res.redirect('localhost:4004';
 });
-app.listen(port, function () {
+http.listen(port, function () {
     console.log('THE PORT OF THE SERVER: ', port)
 })
 
@@ -256,9 +256,9 @@ function game() {
             bulletArr[i].destroy();
         }
     }
-    for (let i in pistolArr) {
-        pistolArr[i].mul();
-    }
+    // for (let i in pistolArr) {
+    //     pistolArr[i].mul();
+    // }
     for (var i = 0; i <= 8; i++) {
         for (let i in craterArr) {
             craterArr[i].cr();

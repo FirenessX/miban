@@ -25,7 +25,7 @@ module.exports = class AlligatorTale extends LivingCreature{
         return super.chooseCell(character);
     }
     move() {
-        const aCells = random(this.chooseCell(17));
+        const aCells = this.random(this.chooseCell(17));
         if (aCells) {
             let newX = aCells[0];
             let newY = aCells[1];

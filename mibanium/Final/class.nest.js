@@ -19,9 +19,9 @@ module.exports = class Nest extends LivingCreature{
         var emptyCells = this.chooseCell(0);
         var grassCells = this.chooseCell(1);
         var mushCells = this.chooseCell(3);
-        var newCell = random(emptyCells);
-        var newCellG = random(grassCells);
-        var newCellM = random(mushCells);
+        var newCell = this.random(emptyCells);
+        var newCellG = this.random(grassCells);
+        var newCellM = this.random(mushCells);
 
         if (newCell && this.multiply >= 30) {
             var newX = newCell[0];
