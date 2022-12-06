@@ -4,7 +4,7 @@ module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
-        this.energy = 240;
+        this.energy = 500;
         this.directions = []
     }
 
@@ -35,7 +35,7 @@ module.exports = class Predator extends LivingCreature{
         var mushCells = this.chooseCell(3);
         var newCellM = this.random(mushCells);
 
-        if (newCell && this.multiply >= 240) {
+        if (newCell && this.multiply >= 120) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 12;
@@ -44,7 +44,7 @@ module.exports = class Predator extends LivingCreature{
             this.energy = 120;
             this.multiply = 0;
         }
-        if (newCellG && this.multiply >= 240) {
+        if (newCellG && this.multiply >= 120) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 12;
@@ -53,7 +53,7 @@ module.exports = class Predator extends LivingCreature{
             this.energy = 120;
             this.multiply = 0;
         }
-        if (newCellM && this.multiply >= 240) {
+        if (newCellM && this.multiply >= 120) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 12;
@@ -85,7 +85,7 @@ module.exports = class Predator extends LivingCreature{
                     break;
                 }
             }
-            this.energy + 0.5;
+                this.energy = this.energy + 3;
         }
             if (newCellsGEs) {
                 var newX = newCellsGEs[0];
@@ -103,7 +103,7 @@ module.exports = class Predator extends LivingCreature{
                         break;
                     }
                 }
-                this.energy + 2;
+                    this.energy = this.energy + 4;
             }
                 if (newCellsMush) {
                     var newX = newCellsMush[0];
@@ -122,11 +122,15 @@ module.exports = class Predator extends LivingCreature{
                         }
                     }
                 }
+                    this.energy = this.energy - 3;
                 if (bdeath) {
                     this.die();
                 }
             else {
                 this.move()
+            }
+            if (this.multiply >= 120) {
+                this.mul();
             }
         }
     move() {
@@ -167,12 +171,9 @@ module.exports = class Predator extends LivingCreature{
             this.x = newX;
             this.y = newY;
         }
-        this.energy--
+            this.energy--;
         if (this.energy <= 0) {
             this.die()
-        }
-        if (this.multiply > 240) {
-            this.mul();
         }
     }
 

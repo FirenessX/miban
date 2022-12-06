@@ -4,7 +4,11 @@ module.exports = class Caviar extends LivingCreature{
     constructor (x, y, index){
         super(x, y, index);
         this.multiply = 0;
-        this.time = 20;
+        this.time = 21;
+        this.directions = [];
+    }
+
+    getNewCordinates(){
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x    , this.y - 1],
@@ -13,24 +17,15 @@ module.exports = class Caviar extends LivingCreature{
             [this.x + 1, this.y    ],
             [this.x - 1, this.y + 1],
             [this.x    , this.y + 1],
-            [this.x + 1, this.y + 1],
-            
+            [this.x + 1, this.y + 1],     
         ];   
     }
-    chooseCell(character) {
-        let found = [];
-        for (let i in this.directions) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-    
-        }
-        return found;
+
+    chooseCell(character){
+        this.getNewCordinates()
+        return super.chooseCell(character);
     }
+
     mul() {
     
         var waterCells = this.chooseCell(7);
@@ -46,7 +41,7 @@ module.exports = class Caviar extends LivingCreature{
         if (secaldieCells) {
             this.stop();
         }
-        if (newCell && this.multiply >= 10) {
+        if (newCell && this.multiply >= 20) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 10;
@@ -58,6 +53,7 @@ module.exports = class Caviar extends LivingCreature{
         this.multiply++;
         this.time--;
     }
+
     stop() {
         for (var i in caviarArr) {
             if (this.x == caviarArr[i].x && this.y == caviarArr[i].y) {
@@ -67,4 +63,5 @@ module.exports = class Caviar extends LivingCreature{
         }
         matrix[this.y][this.x] = 7
     }
-    }
+}
+var Fishs = require("./class.fishs.js");

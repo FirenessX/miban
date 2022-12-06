@@ -1,25 +1,158 @@
 <html>
-   <head>
-   </head>
-   <body>
-       <style>
-           body{
-               display:flex;
-               justify-content:center;
-               align-items:center;
-               margin-top:20px;
-               background:url("bg.png");
-           }
-           #defaultCanvas0 {
-               -webkit-box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
-               -moz-box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
-               box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
-           }
-       </style>
-       <div class="cringe">
-        <script src="/socket.io/socket.io.js"></script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-           <script src="script.js"></script>
-       </div>
-   </body>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="http://127.0.0.1:4004/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <script src="script.js"></script>
+        <style>
+            body{
+                display:flex;
+                justify-content:center;
+                flex-direction: column;
+
+                background:black;
+            }
+            #defaultCanvas0 {
+                -webkit-box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
+                -moz-box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
+                box-shadow: 0px 0px 20px 12px rgba(255, 106, 0, 1);
+                display: block;
+                margin: auto auto 25px auto;
+            }
+
+            div {
+               display: inline-block;
+            }
+
+            h1 {
+                color:#ddd;
+                padding: 20px;
+                text-align: center;
+            }
+            td, th{
+                color:#ddd;
+            }
+/*            #shoot{
+                background:#aa0000;
+                padding: 30px 60px;
+                border-radius:75px;
+                margin-left:60px;
+                color: black;
+                border: solid 9px black;
+                font-size: 60px;     
+            }
+            #shoot:hover {
+                background:black;
+                padding: 30px 60px;
+                border-radius:75px;
+                margin-left:60px;
+                color: #aa0000;
+                border: solid 9px #aa0000; 
+                font-size: 60px;           
+            }*/
+        </style>
+    </head>
+    <body>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <h1>Ծրագրավորում III Երևան</h1>
+            </tr>
+            <tr>
+                <h1>Բազիկյան Գևորգ</h1>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Գույն</th>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Ծնվել է / Ստեղծվել է</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td scope="row" style="background-color:green;"></td>
+                <td>Կանաչը <b>խոտն</b> է, որը բազմանում է 2 ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td id="grassCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td scope="row" style="background-color:#ffad00;"></td>
+                <td>Դեղինը  <b>խոտակերն</b> է, որը բազմանում է 20 հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է գիշատիչը:</td>
+                <td id="grassEatersCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td scope="row" style="background-color:#c63535;"></td>
+                <td>Բորդոն <b>թունավոր սունկն</b> է, որը բազմանում է մենակ աշնանը,մահանում է երբ նրան ուտում է խոտակերը, կամ նրան կոխկրտում է գիշատիչը։</td>
+                <td id="mushroomCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td scope="row" style="background-color:black;"></td>
+                <td>Սևը <b>Արարիչն</b> է, ով ստեղծում է ամեն ինչ և "դուրս գալուց" առաջ ցանում է խոտերն ու սնկերը։</td>
+                <td id="creatorCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td scope="row" style="background-color:#9a4b00;"></td>
+                <td>Մուգ նաարնջագույնը <b>խոտակերների բունն</b> է, որից 20 ցիկլը մեկ դուրս է գալիս նոր խոտակեր։</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td scope="row" style="background-color:#ff884d;"></td>
+                <td>Վառ նարնջագույնը <b>ձկնիկն</b> է, որը ամեն 101 ցիկլը թողնում է ձկնկիթ և մահանում է տարիքից, կամ
+                    երբ նրան ուտում է կոկորդիլոսներնը</td>
+                <td id="fishsCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td scope="row" style="background-color:#88ebfd;"></td>
+                <td>Փիրուզագույնը <b>ձկնիկների բունն</b> է, որից 10 ցիկլը մեկ դուրս է գալիս նոր ձկնիկ։</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td scope="row" style="background-color:#ff4928;"></td>
+                <td>Մարջանը <b>ձկնկիթն</b> է, որից 10 ցիկլ անց նոր ձկնիկ է դուրս գալիս</td>
+                <td id="caviarCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td scope="row" style="background-color:#480c00;"></td>
+                <td>Մանուշակագույն <b>գիշատիչն</b> է, որը բազմանում ամեն 120 խոտ և խոտակեր ուտելուց</td>
+                <td id="predatorCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td scope="row" style="background: rgb(0,94,0);
+background: linear-gradient(0deg, rgba(94,0,0,1) 40%, rgba(0,94,0,1) 60%);"></td>
+                <td>Մուջ կանաչն և մուգ կարմիրը <b>կոկորդիլոսներն</b> է, որոնք խժռում են ձկնիկներին, եթե նրանք չհեռանան նրանց ճանապարհից</td>
+                <td>1, 1</td>
+            </tr>
+            <tr>
+                <th scope="row">11</th>
+                <td scope="row" style="background-color:#303030;"></td>
+                <td>Մոխրագույնը <b>եռախցիկ հրացանն</b> է, որը 1.5% հավանականությամբ կրակելու է</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th scope="row">12</th>
+                <td scope="row" style="background-color:yellow;"></td>
+                <td>Դեղինը <b>փամփուշտն</b> է, որը ոչնչացնում է ամեն ինչ ինչ կա նրա դեմը (Բացի Արարիչից) և կանգ առնելու վայրում թողնում է կրատոր</td>
+                <td id="bulletCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">13</th>
+                <td scope="row" style="background-color:red;"></td>
+                <td>Կարմիրը <b>կրատորն</b> է, որը իր շրջակայքն վառում է և 8 ցիկլ հետո անհետանում</td>
+                <td id="craterCount"></td>
+            </tr>
+        </tbody>
+    </table>      
+    </body>
 </html>

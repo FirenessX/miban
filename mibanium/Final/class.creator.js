@@ -1,4 +1,6 @@
 let LivingCreature = require('./LivingCreature');
+var Grass = require("./class.grass.js");
+var Mushroom = require("./class.mushroom.js");
 
 module.exports = class Creator extends LivingCreature{
     constructor(x, y) {

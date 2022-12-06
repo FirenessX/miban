@@ -29,10 +29,10 @@ module.exports = class Mushroom extends LivingCreature{
     mul () {
         
         var emptyCells = this.chooseCell(0);
-        var grassCells = this.chooseCell(0);
+        var grassCells = this.chooseCell(1);
         var newCell = this.random(emptyCells);
         var newCellG = this.random(grassCells);
-        if(newCell && this.multiply >= 210){
+        if(newCell && this.multiply >= 250){
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 3;
@@ -41,7 +41,7 @@ module.exports = class Mushroom extends LivingCreature{
             mushroomArr.push(newMushroom);
             this.multiply = 0;
         }
-        if(newCellG && this.multiply >= 210){
+        if(newCellG && this.multiply >= 250){
             var newX = newCellG[0];
             var newY = newCellG[1];
             matrix[newY][newX] = 3;

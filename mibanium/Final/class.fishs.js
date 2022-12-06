@@ -3,9 +3,9 @@ let LivingCreature = require('./LivingCreature');
 module.exports = class Fishs extends LivingCreature{
     constructor(x, y) {
         super(x, y);
-        this.energy = 30;
+        this.energy = 100;
         this.multiply = 0;
-        this.directions = []
+        this.directions = [];
     }
 
     getNewCordinates() {
@@ -30,7 +30,7 @@ module.exports = class Fishs extends LivingCreature{
         var waterCells = this.chooseCell(7);
         var newCell = this.random(waterCells);
 
-        if (newCell && this.multiply >= 70) {
+        if (newCell && this.multiply >= 101) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 11;
@@ -42,6 +42,7 @@ module.exports = class Fishs extends LivingCreature{
             this.move()
         }
     }
+
     move() {
         const waterCells = this.random(this.chooseCell(7));
         const aldieCells = this.random(this.chooseCell(13));
@@ -65,6 +66,7 @@ module.exports = class Fishs extends LivingCreature{
             this.die();
         }
     }
+
     die() {
         for(var i in fishsArr){
             if (this.x== fishsArr[i].x && this.y == fishsArr[i].y) {
@@ -72,6 +74,7 @@ module.exports = class Fishs extends LivingCreature{
                 break;
             }
         }
-    matrix[this.y][this.x] = 7
+        matrix[this.y][this.x] = 7
+    }
 }
-}
+var Caviar = require("./class.caviar.js");

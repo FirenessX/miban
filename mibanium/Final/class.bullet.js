@@ -1,4 +1,5 @@
 let LivingCreature = require('./LivingCreature');
+var Crater = require("./class.crater.js");
 
 module.exports = class Bullet extends LivingCreature{
     constructor(x, y) {

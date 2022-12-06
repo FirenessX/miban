@@ -1,4 +1,5 @@
 let LivingCreature = require('./LivingCreature');
+var GrassEaters = require("./class.grasseaters.js");
 
 module.exports = class Nest extends LivingCreature{
     constructor(x, y, index) {
@@ -23,29 +24,32 @@ module.exports = class Nest extends LivingCreature{
         var newCellG = this.random(grassCells);
         var newCellM = this.random(mushCells);
 
-        if (newCell && this.multiply >= 30) {
+        if (newCell && this.multiply >= 10) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 2;
             matrix[this.y][this.x] = 5;
             grassEatersArr.push(new GrassEaters(newX, newY));
-            this.energy = 5;
+            this.energy = 30;
+            this.multiply = 0;
         }
-        if (newCellG && this.multiply >= 30) {
+        if (newCellG && this.multiply >= 10) {
             var newX = newCellG[0];
             var newY = newCellG[1];
             matrix[newY][newX] = 2;
             matrix[this.y][this.x] = 5;
             grassEatersArr.push(new GrassEaters(newX, newY));
-            this.energy = 5;
+            this.energy = 30;
+            this.multiply = 0;
         }
-        if (newCellM && this.multiply >= 30) {
+        if (newCellM && this.multiply >= 10) {
             var newX = newCellM[0];
             var newY = newCellM[1];
             matrix[newY][newX] = 2;
             matrix[this.y][this.x] = 5;
             grassEatersArr.push(new GrassEaters(newX, newY));
-            this.energy = 5;
+            this.energy = 30;
+            this.multiply = 0;
         }
         this.multiply++;
     }
